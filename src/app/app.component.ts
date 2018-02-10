@@ -38,7 +38,18 @@ export class AppComponent implements OnInit {
     let URLCompleta = this.baseURL + this.nombrePersona;
     this.http.get(URLCompleta).subscribe((data) => {
       this.respuestaAPI = data;
-      console.log(this.respuestaAPI);
+      switch (this.respuestaAPI.gender) {
+        case 'male':
+          this.respuestaAPI.gender = 'hombre'; 
+          break;
+        case 'female':
+          this.respuestaAPI.gender = 'mujer';
+          break;
+        default:
+          break;
+      }
+
+
     });
   } 
 
